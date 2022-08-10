@@ -28,7 +28,7 @@ const data = [
   {
     id: 1,
     Type: "boot",
-    Price: "$100",
+    Price: "$900",
     Description: "This is a pair of boots",
     AvaibleSizes: [35, 36, 41, 42],
     Image: "/images/shoe4.jpg",
