@@ -1,23 +1,32 @@
-import useCart from "../../Hooks/useCart";
+import { useContext } from "react";
+import {
+  CheckoutContext,
+  CheckoutProvider,
+} from "../../Contexts/CheckoutContext";
 import CartItem from "./cart-item";
 import Checkout from "./Checkout";
 const CartItems = () => {
-  const { cartItems, calculateTotalCost, renderCartItems } = useCart();
+  return (
+    <CheckoutProvider>
+      <CartItemsNoProvider />
+    </CheckoutProvider>
+  );
+};
+const CartItemsNoProvider = () => {
+  const { cartItems } = useContext(CheckoutContext);
   return (
     <>
       <ul className="cart-items">
-        {cartItems.map((item) => {
-          console.log(item);
-          return (
-            <CartItem
-              key={item.id}
-              item={item}
-              renderCartItems={renderCartItems}
-            />
-          );
-        })}
+        {cartItems.length == 0 ? (
+          <h1>There is nothing in the cart</h1>
+        ) : (
+          cartItems.map((item) => {
+            console.log(item);
+            return <CartItem key={item.id} item={item} />;
+          })
+        )}
       </ul>
-      <Checkout calculateTotalCost={calculateTotalCost} />
+      <Checkout />
     </>
   );
 };

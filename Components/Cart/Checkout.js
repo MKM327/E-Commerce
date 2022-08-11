@@ -1,4 +1,7 @@
-const Checkout = ({ calculateTotalCost }) => {
+import { useContext } from "react";
+import { CheckoutContext } from "../../Contexts/CheckoutContext";
+const Checkout = () => {
+  const { calculateTotalCost } = useContext(CheckoutContext);
   return (
     <div className="total-wrapper">
       <div className="cart-total">

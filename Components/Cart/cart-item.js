@@ -1,4 +1,8 @@
-const ItemDescription = ({ Description, id, renderCartItems }) => {
+import { useContext } from "react";
+import { CheckoutContext } from "../../Contexts/CheckoutContext";
+const ItemDescription = ({ Description, id }) => {
+  const { renderCartItems } = useContext(CheckoutContext);
+
   return (
     <div className="description-wrapper">
       <p className="cart-description">{Description}</p>
@@ -35,11 +39,7 @@ const CartItem = ({ item, renderCartItems }) => {
       <div className="image-wrapper">
         <img src={Image} alt="" className="cart-image" />
       </div>
-      <ItemDescription
-        Description={Description}
-        id={id}
-        renderCartItems={renderCartItems}
-      />
+      <ItemDescription Description={Description} id={id} />
       <div className="cart-checkout">
         <span className="cart-price">{`${Price}$`}</span>
       </div>

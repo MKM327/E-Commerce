@@ -6,7 +6,7 @@ const ProductDescription = ({ product }) => {
       <div className="product-price-description">
         <span className="product-price">{Price}</span>
         <button
-          className="add-to-cart"
+          className="product-button"
           onClick={() => {
             sessionStorage.setItem(id, JSON.stringify(product));
           }}
@@ -18,7 +18,7 @@ const ProductDescription = ({ product }) => {
   );
 };
 const Product = ({ product }) => {
-  const { Price, Description, Image } = product;
+  const { Image } = product;
   return (
     <div className="product">
       <div className="image-wrapper">
