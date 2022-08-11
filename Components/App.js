@@ -26,7 +26,7 @@ const data = [
     Image: "/images/shoe3.jpg",
   },
   {
-    id: 1,
+    id: 4,
     Type: "boot",
     Price: "$900",
     Description: "This is a pair of boots",

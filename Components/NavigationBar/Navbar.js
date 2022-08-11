@@ -1,16 +1,17 @@
+import Link from "next/link";
+
+Link;
 const Navbar = () => {
   return (
     <nav>
       <ul className="navbar-elements">
-        <li>
-          <a href="">Shop</a>
-        </li>
-        <li>
-          <a href="">Cart</a>
-        </li>
-        <li>
-          <a href="">Sign in</a>
-        </li>
+        <Link href={"/"}>
+          <li>Shop</li>
+        </Link>
+        <Link href={"/Cart"}>
+          <li>Cart</li>
+        </Link>
+        <li>Sign in</li>
       </ul>
     </nav>
   );
