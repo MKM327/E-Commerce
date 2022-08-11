@@ -4,7 +4,7 @@ const data = [
   {
     id: 1,
     Type: "boot",
-    Price: "$100",
+    Price: 100,
     Description: "This is a pair of boots",
     AvaibleSizes: [35, 36, 41, 42],
     Image: "/images/shoe1.jpg",
@@ -12,7 +12,7 @@ const data = [
   {
     id: 2,
     Type: "boot",
-    Price: "$100",
+    Price: 100,
     Description: "This is a pair of boots",
     AvaibleSizes: [35, 36, 41, 42],
     Image: "/images/shoe2.jpg",
@@ -20,7 +20,7 @@ const data = [
   {
     id: 3,
     Type: "boot",
-    Price: "$100",
+    Price: 100,
     Description: "This is a pair of boots",
     AvaibleSizes: [35, 36, 41, 42],
     Image: "/images/shoe3.jpg",
@@ -28,7 +28,7 @@ const data = [
   {
     id: 4,
     Type: "boot",
-    Price: "$900",
+    Price: 300,
     Description: "This is a pair of boots",
     AvaibleSizes: [35, 36, 41, 42],
     Image: "/images/shoe4.jpg",
