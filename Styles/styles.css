@@ -27,8 +27,7 @@ html,body{
     padding: 5px;
 }
 .navbar-elements li:hover{
-    border: 1px white solid;
-    margin: -1px;
+    cursor: pointer;
 }
 
 .navbar-elements a{
@@ -44,7 +43,7 @@ html,body{
     justify-content: space-between;
     align-items: center;
 }
-.add-to-cart{
+.product-button{
     background-color: #868686;
     color: white;
     border: 1px white solid;
