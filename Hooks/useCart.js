@@ -5,8 +5,8 @@ const useCart = () => {
   function calculateTotalCost() {
     let total = 0;
     cartItems.forEach((item) => {
-      if (item.Quantity) {
-        total += item.Price * item.Quantity;
+      if (item.SelectedQuantity) {
+        total += item.Price * item.SelectedQuantity;
       } else {
         total += item.Price;
       }

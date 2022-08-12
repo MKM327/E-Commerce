@@ -4,7 +4,7 @@ const ProductDescription = ({ product }) => {
     <div className="product-description">
       <p className="product-details">{Description}</p>
       <div className="product-price-description">
-        <span className="product-price">{Price}</span>
+        <span className="product-price">{`${Price}$`}</span>
         <button
           className="product-button"
           onClick={() => {

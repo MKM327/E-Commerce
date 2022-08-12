@@ -23,16 +23,22 @@ const ItemDescription = ({ item }) => {
           onChange={(e) => {
             sessionStorage.setItem(
               id,
-              JSON.stringify({ ...item, Quantity: e.target.value })
+              JSON.stringify({ ...item, SelectedQuantity: e.target.value })
             );
             renderCartItems();
           }}
         >
-          <option value="1" selected>
-            1
-          </option>
-          <option value="2">2</option>
-          <option value="3">3</option>
+          //create an option based on the quantity count
+          {Array(item.Quantity)
+            //max is 9
+            .fill(0)
+            .map((_, index) =>
+              index < 9 ? (
+                <option key={index} value={index + 1}>
+                  {index + 1}
+                </option>
+              ) : null
+            )}
         </select>
       </div>
     </div>
@@ -48,7 +54,7 @@ const CartItem = ({ item }) => {
       <ItemDescription item={item} />
       <div className="cart-checkout">
         <span className="cart-price">{`${
-          item.Quantity ? Price * item.Quantity : Price
+          item.SelectedQuantity ? Price * item.SelectedQuantity : Price
         }$`}</span>
       </div>
     </li>

@@ -21,7 +21,6 @@ const CartItemsNoProvider = () => {
           <h1>There is nothing in the cart</h1>
         ) : (
           cartItems.map((item) => {
-            console.log(item);
             return <CartItem key={item.id} item={item} />;
           })
         )}
