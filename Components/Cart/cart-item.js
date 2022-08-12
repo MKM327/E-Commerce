@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { CheckoutContext } from "../../Contexts/CheckoutContext";
-const ItemDescription = ({ Description, id }) => {
+const ItemDescription = ({ item }) => {
   const { renderCartItems } = useContext(CheckoutContext);
-
+  const { Description, Price, Image, id } = item;
   return (
     <div className="description-wrapper">
       <p className="cart-description">{Description}</p>
@@ -20,7 +20,13 @@ const ItemDescription = ({ Description, id }) => {
           name="select"
           id="select"
           className="cart-select"
-          onChange={(e) => setQuantity(e.target.value)}
+          onChange={(e) => {
+            sessionStorage.setItem(
+              id,
+              JSON.stringify({ ...item, Quantity: e.target.value })
+            );
+            renderCartItems();
+          }}
         >
           <option value="1" selected>
             1
@@ -32,16 +38,18 @@ const ItemDescription = ({ Description, id }) => {
     </div>
   );
 };
-const CartItem = ({ item, renderCartItems }) => {
+const CartItem = ({ item }) => {
   const { Description, Price, Image, id } = item;
   return (
     <li className="cart-item">
       <div className="image-wrapper">
         <img src={Image} alt="" className="cart-image" />
       </div>
-      <ItemDescription Description={Description} id={id} />
+      <ItemDescription item={item} />
       <div className="cart-checkout">
-        <span className="cart-price">{`${Price}$`}</span>
+        <span className="cart-price">{`${
+          item.Quantity ? Price * item.Quantity : Price
+        }$`}</span>
       </div>
     </li>
   );

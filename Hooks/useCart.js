@@ -5,7 +5,11 @@ const useCart = () => {
   function calculateTotalCost() {
     let total = 0;
     cartItems.forEach((item) => {
-      total += item.Price;
+      if (item.Quantity) {
+        total += item.Price * item.Quantity;
+      } else {
+        total += item.Price;
+      }
     });
     return total;
   }
