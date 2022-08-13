@@ -6,9 +6,9 @@ const useCart = () => {
     let total = 0;
     cartItems.forEach((item) => {
       if (item.SelectedQuantity) {
-        total += item.Price * item.SelectedQuantity;
+        total += item.price * item.SelectedQuantity;
       } else {
-        total += item.Price;
+        total += item.price;
       }
     });
     return total;

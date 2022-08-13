@@ -1,10 +1,10 @@
 const ProductDescription = ({ product }) => {
-  const { Price, Description, id } = product;
+  const { price, description, id } = product;
   return (
     <div className="product-description">
-      <p className="product-details">{Description}</p>
+      <p className="product-details">{description}</p>
       <div className="product-price-description">
-        <span className="product-price">{`${Price}$`}</span>
+        <span className="product-price">{`${price}$`}</span>
         <button
           className="product-button"
           onClick={() => {
@@ -18,11 +18,14 @@ const ProductDescription = ({ product }) => {
   );
 };
 const Product = ({ product }) => {
-  const { Image } = product;
   return (
     <div className="product">
       <div className="image-wrapper">
-        <img src={Image} alt="test" className="product-image" />
+        <img
+          src={`/images/${product.id}.jpg`}
+          alt="test"
+          className="product-image"
+        />
       </div>
       <ProductDescription product={product} />
       <div className="product-cart"></div>
