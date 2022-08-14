@@ -70,3 +70,6 @@ html,body{
     color: white;
     cursor: pointer;
 }
+#__next{
+    height: 100%;
+}
