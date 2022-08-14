@@ -1,10 +1,13 @@
-import useLoginAPI from "../../Hooks/useLoginAPI";
-
+import { useContext } from "react";
+import { LoginContext } from "../../Contexts/LoginContext";
+import Link from "next/link";
 const LoginForm = () => {
-  const { setPassword, setUsername, handleSubmit, user } = useLoginAPI();
+  const { setPassword, setUsername, handleSubmit, user } =
+    useContext(LoginContext);
+  console.log(user);
   return (
     <form className="login-form" onSubmit={handleSubmit}>
-      {user ? <h1>USER</h1> : <h1>Test</h1>}
+      {!user ? <span>Invalid username or Password</span> : null}
       <h2>Sign in</h2>
       <input
         type="text"

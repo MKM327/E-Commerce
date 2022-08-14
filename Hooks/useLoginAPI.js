@@ -1,10 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/router";
 const ApiRoot = "https://localhost:7160/api/Login/";
 const useLoginAPI = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
+  const router = useRouter();
   async function VerifyUser() {
     try {
       const response = await axios.post(ApiRoot + "Verify", {
@@ -19,8 +21,9 @@ const useLoginAPI = () => {
   }
   async function handleSubmit(e) {
     e.preventDefault();
-    VerifyUser();
+    await VerifyUser();
+    user ? router.push("/") : null;
   }
-  return { setPassword, setUsername, handleSubmit, user };
+  return { setPassword, setUsername, handleSubmit, user, setUser };
 };
 export default useLoginAPI;

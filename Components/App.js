@@ -1,49 +1,14 @@
+import { useContext } from "react";
+import { LoginContext } from "../Contexts/LoginContext";
 import Navbar from "./NavigationBar/Navbar";
 import Products from "./Products/Products";
-const data = [
-  {
-    id: 1,
-    Type: "boot",
-    Price: 100,
-    Description: "This is a pair of boots",
-    Quantity:5,
-    AvaibleSizes: [35, 36, 41, 42],
-    Image: "/images/shoe1.jpg",
-  },
-  {
-    id: 2,
-    Type: "boot",
-    Price: 100,
-    Description: "This is a pair of boots",
-    Quantity:8,
-    AvaibleSizes: [35, 36, 41, 42],
-    Image: "/images/shoe2.jpg",
-  },
-  {
-    id: 3,
-    Type: "boot",
-    Price: 100,
-    Quantity:10,
-    Description: "This is a pair of boots",
-    AvaibleSizes: [35, 36, 41, 42],
-    Image: "/images/shoe3.jpg",
-  },
-  {
-    id: 4,
-    Type: "boot",
-    Price: 300,
-    Quantity:7,
-    Description: "This is a pair of boots",
-    AvaibleSizes: [35, 36, 41, 42],
-    Image: "/images/shoe4.jpg",
-  },
-];
 const App = () => {
+  const { user } = useContext(LoginContext);
   return (
     <>
       <Navbar />
       <div className="container">
-        <Products data={data} />
+        <Products />
       </div>
     </>
   );

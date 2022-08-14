@@ -1,6 +1,17 @@
 import Link from "next/link";
+import { useContext } from "react";
+import { LoginContext } from "../../Contexts/LoginContext";
+const SignInButton = () => {
+  const { user, setUser } = useContext(LoginContext);
 
-Link;
+  return user ? (
+    <li onClick={() => setUser(null)}>Log out</li>
+  ) : (
+    <Link href={"/Login"}>
+      <li>Sign in</li>
+    </Link>
+  );
+};
 const Navbar = () => {
   return (
     <nav>
@@ -11,9 +22,7 @@ const Navbar = () => {
         <Link href={"/Cart"}>
           <li>Cart</li>
         </Link>
-        <Link href={"/Login"}>
-          <li>Sign in</li>
-        </Link>
+        <SignInButton />
       </ul>
     </nav>
   );
