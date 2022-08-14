@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 const useProductAPI = () => {
@@ -8,11 +9,12 @@ const useProductAPI = () => {
     getProducts();
   }, []);
   async function getProducts() {
-    const data = await fetch(ApiRoot);
-    const products = await data.json();
+    const response = await axios.get(ApiRoot);
+    products = response.data;
     if (products.length > 0) {
       setProducts(products);
       setIsLoading(false);
+      console.log("GET API RESULT 200");
     }
   }
 
