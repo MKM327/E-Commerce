@@ -1,29 +1,27 @@
 import Link from "next/link";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LoginContext } from "../../Contexts/LoginContext";
-const SignInButton = () => {
-  const { user, setUser } = useContext(LoginContext);
+import HandleRoles from "../HandleRoles";
+import AdminNavbar from "./AdminNavbar";
+import UserNavbar from "./UserNavbar";
 
-  return user ? (
-    <li onClick={() => setUser(null)}>Log out</li>
-  ) : (
-    <Link href={"/Login"}>
-      <li>Sign in</li>
-    </Link>
-  );
-};
 const Navbar = () => {
+  const [rendered, setRendered] = useState(false);
+  useEffect(() => {
+    setRendered(true);
+  }, []);
   return (
     <nav>
-      <ul className="navbar-elements">
-        <Link href={"/"}>
-          <li>Shop</li>
-        </Link>
-        <Link href={"/Cart"}>
-          <li>Cart</li>
-        </Link>
-        <SignInButton />
-      </ul>
+      {rendered == true ? (
+        <>
+          <HandleRoles role={"Admin"}>
+            <AdminNavbar />
+          </HandleRoles>
+          <HandleRoles role={"Customer"}>
+            <UserNavbar />
+          </HandleRoles>
+        </>
+      ) : null}
     </nav>
   );
 };

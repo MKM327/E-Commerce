@@ -4,7 +4,6 @@ import Link from "next/link";
 const LoginForm = () => {
   const { setPassword, setUsername, handleSubmit, user } =
     useContext(LoginContext);
-  console.log(user);
   return (
     <form className="login-form" onSubmit={handleSubmit}>
       {!user ? <span>Invalid username or Password</span> : null}
