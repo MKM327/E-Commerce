@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { LoginContext } from "../Contexts/LoginContext";
+import RoleErrorComponent from "./RoleErrorComponent";
 const CheckRole = (role) => {
   const { user } = useContext(LoginContext);
   if (user == null) {
-    return role == "Customer";
+    return role == "customer";
   }
-  if (user.role === role) {
+  if (user.role.toLowerCase() === role) {
     return true;
   } else {
     return false;
@@ -13,6 +14,6 @@ const CheckRole = (role) => {
 };
 const HandleRoles = ({ children, role }) => {
   const permitted = CheckRole(role);
-  return <>{permitted && children}</>;
+  return <>{permitted ? children : <RoleErrorComponent />}</>;
 };
 export default HandleRoles;

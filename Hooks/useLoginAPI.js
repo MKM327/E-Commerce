@@ -6,6 +6,7 @@ const useLoginAPI = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
+  const [isInvalid, setIsInvalid] = useState(false);
   const router = useRouter();
   useEffect(() => {
     if (localStorage.getItem("user")) {
@@ -19,7 +20,6 @@ const useLoginAPI = () => {
         password: password,
       });
       response.status === 200 ? loginUser(response.data) : setUser(null);
-      return user;
     } catch (error) {
       console.log("invalid username or Password");
       setUser(null);
@@ -34,12 +34,24 @@ const useLoginAPI = () => {
     localStorage.removeItem("user");
     setUser(null);
   }
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    var loggedInUser = VerifyUser();
-    console.log(loggedInUser);
-    loggedInUser ? router.push("/") : null;
+    await VerifyUser();
+    const savedUser = localStorage.getItem("user");
+    if (savedUser) {
+      setIsInvalid(false);
+    } else {
+      setIsInvalid(true);
+    }
   }
-  return { setPassword, setUsername, handleSubmit, user, setUser, logOut };
+  return {
+    setPassword,
+    setUsername,
+    handleSubmit,
+    user,
+    setUser,
+    logOut,
+    isInvalid,
+  };
 };
 export default useLoginAPI;

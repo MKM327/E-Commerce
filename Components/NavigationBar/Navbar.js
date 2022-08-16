@@ -1,6 +1,4 @@
-import Link from "next/link";
-import { useContext, useEffect, useState } from "react";
-import { LoginContext } from "../../Contexts/LoginContext";
+import { useEffect, useState } from "react";
 import HandleRoles from "../HandleRoles";
 import AdminNavbar from "./AdminNavbar";
 import UserNavbar from "./UserNavbar";
@@ -14,10 +12,10 @@ const Navbar = () => {
     <nav>
       {rendered == true ? (
         <>
-          <HandleRoles role={"Admin"}>
+          <HandleRoles role={"admin"}>
             <AdminNavbar />
           </HandleRoles>
-          <HandleRoles role={"Customer"}>
+          <HandleRoles role={"customer"}>
             <UserNavbar />
           </HandleRoles>
         </>

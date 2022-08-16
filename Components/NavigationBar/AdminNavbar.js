@@ -10,6 +10,9 @@ const AdminNavbar = () => {
       <Link href={"/Cart"}>
         <li>Cart</li>
       </Link>
+      <Link href={"/Admin"}>
+        <li>Dashboard</li>
+      </Link>
       <SignInButton />
     </ul>
   );

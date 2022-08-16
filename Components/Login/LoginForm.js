@@ -1,12 +1,11 @@
 import { useContext } from "react";
 import { LoginContext } from "../../Contexts/LoginContext";
-import Link from "next/link";
 const LoginForm = () => {
-  const { setPassword, setUsername, handleSubmit, user } =
+  const { setPassword, setUsername, handleSubmit, isInvalid } =
     useContext(LoginContext);
   return (
     <form className="login-form" onSubmit={handleSubmit}>
-      {!user ? <span>Invalid username or Password</span> : null}
+      {isInvalid ? <span>Invalid username or Password</span> : null}
       <h2>Sign in</h2>
       <input
         type="text"
