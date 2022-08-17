@@ -12,8 +12,20 @@ const CheckRole = (role) => {
     return false;
   }
 };
-const HandleRoles = ({ children, role }) => {
+const HandleRoles = ({ children, role, pageCheck = false }) => {
   const permitted = CheckRole(role);
-  return <>{permitted ? children : <RoleErrorComponent />}</>;
+  return (
+    <>
+      {pageCheck ? (
+        permitted ? (
+          children
+        ) : (
+          <RoleErrorComponent />
+        )
+      ) : (
+        permitted && children
+      )}
+    </>
+  );
 };
 export default HandleRoles;

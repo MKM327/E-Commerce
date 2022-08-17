@@ -1,0 +1,112 @@
+.dashboard-list{
+    position: relative;
+    display: inline-block;
+    list-style: none;
+    padding: 0px;
+    width: 10%;
+    margin-left: 5px;
+}
+.dashboard-list::after{
+    position: absolute;
+    content: "";
+    display: block;
+    border: 1px rgb(255, 255, 255) solid;
+    top: 0px;
+    right: -8px;
+    height: 100%;
+}
+.dashboard-menus{
+    display: flex;
+    gap: 5px;
+    padding: 5px;
+}
+.dashboard-wrapper{
+    background-color: #d3d3d3;
+    border-radius: 5px;
+    padding: 5px;
+}
+.menu-button{
+padding: 15px;
+background-color: white;
+border: none;
+border-radius: 5px;
+box-shadow: 0 0 10px 0 rgba(0,0,0,.15);
+width: 10%;
+transition: background-color .3s ease-in-out;
+}
+.menu-button:hover{
+    cursor: pointer;
+}
+.menu-button:focus{
+    background-color: rgb(206, 210, 207);
+}
+.dashboard-container{
+    height: 100%;
+    margin: 5%;
+}
+.dashboard-operations{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.operation{
+    width: 100%;
+}
+.dashboard-task{
+    display: flex;
+}
+.dashboard-item-list{
+    width: 98%;
+    text-align: center;
+    margin-top: 16px;
+    margin-left: 15px;
+}
+.dashboard-item-header{
+    display: flex;
+    background-color: #999999;
+    padding: 10px;
+}
+.dashboard-item{
+    display: flex;
+    border:  solid 1px white;
+    margin-top: 10px;
+    padding: 10px;
+}
+.dashboard-column{
+    flex: 1;
+}
+.dashboard-item th{
+    flex: 1;
+}
+.item-wrapper{
+    max-height: 300px;
+    flex: 1;
+    overflow-y: auto;
+    border-radius: 5px;
+}
+tbody{
+    flex: 1;
+}
+.item-wrapper::-webkit-scrollbar{
+    width: 15px;
+
+}
+.item-wrapper::-webkit-scrollbar-track{
+    border-radius: 10px;
+}
+.item-wrapper::-webkit-scrollbar-thumb{
+    background-color: rgb(206, 210, 207);
+    border-radius: 10px;
+}
+.item-wrapper::-webkit-scrollbar-track{
+    background-color: white;
+}
+body{
+    overflow:auto;
+}
+.dashboard-item:hover{
+    cursor: pointer;
+}
+.clicked{
+    background-color: rgb(160, 160, 160);
+}
