@@ -1,15 +1,8 @@
 import { useContext } from "react";
-import {
-  ProductContext,
-  ProductProvider,
-} from "../../Contexts/ProductsContext";
+import { ProductContext } from "../../Contexts/ProductsContext";
 import Product from "./Product";
 const Products = () => {
-  return (
-    <ProductProvider>
-      <ProductsNoProvider />
-    </ProductProvider>
-  );
+  return <ProductsNoProvider />;
 };
 const ProductsNoProvider = () => {
   const { products, isLoading } = useContext(ProductContext);

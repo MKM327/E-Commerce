@@ -1,10 +1,11 @@
-const DashboardProduct = () => {
+const DashboardProduct = ({ product }) => {
+  const { price, description, productType, quantity } = product;
   return (
     <tr className="dashboard-item">
-      <td className="dashboard-column">Name</td>
-      <td className="dashboard-column">type</td>
-      <td className="dashboard-column">Price</td>
-      <td className="dashboard-column">Quantity</td>
+      <td className="dashboard-column">{description}</td>
+      <td className="dashboard-column">{productType}</td>
+      <td className="dashboard-column">{price}</td>
+      <td className="dashboard-column">{quantity}</td>
     </tr>
   );
 };

@@ -1,3 +1,4 @@
+import AdminNavbar from "../NavigationBar/AdminNavbar";
 import DashboardTable from "./DashboardTable";
 
 const DashboardMenus = () => {
@@ -23,17 +24,20 @@ const DashboardOperations = () => {
 };
 const Dashboard = () => {
   return (
-    <div className="dashboard-container">
-      <div className="dashboard-wrapper">
-        <DashboardMenus />
-        <div className="dashboard-task">
-          <DashboardOperations />
-          <div className="item-wrapper">
-            <DashboardTable />
+    <>
+      <AdminNavbar />
+      <div className="dashboard-container">
+        <div className="dashboard-wrapper">
+          <DashboardMenus />
+          <div className="dashboard-task">
+            <DashboardOperations />
+            <div className="item-wrapper">
+              <DashboardTable />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 export default Dashboard;
