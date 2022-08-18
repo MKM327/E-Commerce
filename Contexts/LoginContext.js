@@ -10,6 +10,9 @@ const LoginProvider = ({ children }) => {
     setUser,
     logOut,
     isInvalid,
+    allUsers,
+    GetAllUsers,
+    isLoading,
   } = useLoginAPI();
   return (
     <LoginContext.Provider
@@ -21,6 +24,9 @@ const LoginProvider = ({ children }) => {
         setUser,
         logOut,
         isInvalid,
+        allUsers,
+        GetAllUsers,
+        isLoading,
       }}
     >
       {children}

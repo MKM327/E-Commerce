@@ -1,11 +1,22 @@
+import useDashboard from "../../Hooks/useDashboard";
 import AdminNavbar from "../NavigationBar/AdminNavbar";
-import DashboardTable from "./DashboardTable";
-
-const DashboardMenus = () => {
+import DashboardProductTable from "./DashboardProductTable";
+import DashboardUserTable from "./Users/DashboardUserTable";
+const DashboardMenus = ({ setSelectedDashboard }) => {
   return (
     <div className="dashboard-menus">
-      <button className="menu-button">Product</button>
-      <button className="menu-button">Users</button>
+      <button
+        className="menu-button"
+        onClick={() => setSelectedDashboard("products")}
+      >
+        Product
+      </button>
+      <button
+        className="menu-button"
+        onClick={() => setSelectedDashboard("users")}
+      >
+        Users
+      </button>
     </div>
   );
 };
@@ -23,16 +34,21 @@ const DashboardOperations = () => {
   );
 };
 const Dashboard = () => {
+  const { selectedDashboard, setSelectedDashboard } = useDashboard();
   return (
     <>
       <AdminNavbar />
       <div className="dashboard-container">
         <div className="dashboard-wrapper">
-          <DashboardMenus />
+          <DashboardMenus setSelectedDashboard={setSelectedDashboard} />
           <div className="dashboard-task">
             <DashboardOperations />
             <div className="item-wrapper">
-              <DashboardTable />
+              {selectedDashboard === "products" ? (
+                <DashboardProductTable />
+              ) : (
+                <DashboardUserTable />
+              )}
             </div>
           </div>
         </div>

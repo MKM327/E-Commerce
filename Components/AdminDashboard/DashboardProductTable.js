@@ -1,4 +1,4 @@
-import DashboardProducts from "../AdminDashboard/DashboardProducts";
+import DashboardProducts from "./DashboardProducts";
 const DashboardHeader = () => {
   return (
     <tr className="dashboard-item-header">
@@ -9,14 +9,15 @@ const DashboardHeader = () => {
     </tr>
   );
 };
-const DashboardTable = () => {
+const DashboardProductTable = () => {
   return (
     <table className="dashboard-item-list">
-      <DashboardHeader />
-
-      <DashboardProducts />
+      <tbody>
+        <DashboardHeader />
+        <DashboardProducts />
+      </tbody>
     </table>
   );
 };
 
-export default DashboardTable;
+export default DashboardProductTable;
