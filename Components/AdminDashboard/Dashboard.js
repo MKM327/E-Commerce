@@ -1,8 +1,14 @@
-import useDashboard from "../../Hooks/useDashboard";
+import { useContext } from "react";
+import {
+  DashboardContext,
+  DashboardProvider,
+} from "../../Contexts/DashboardContext";
 import AdminNavbar from "../NavigationBar/AdminNavbar";
 import DashboardProductTable from "./DashboardProductTable";
 import DashboardUserTable from "./Users/DashboardUserTable";
-const DashboardMenus = ({ setSelectedDashboard }) => {
+
+const DashboardMenus = () => {
+  const { setSelectedDashboard } = useContext(DashboardContext);
   return (
     <div className="dashboard-menus">
       <button
@@ -21,26 +27,34 @@ const DashboardMenus = ({ setSelectedDashboard }) => {
   );
 };
 const DashboardOperations = () => {
+  const { deleteItem } = useContext(DashboardContext);
   return (
     <ul className="dashboard-list">
       <li className="dashboard-menu">
         <div className="dashboard-operations">
           <button className="menu-button operation">Add</button>
           <button className="menu-button operation">Edit</button>
-          <button className="menu-button operation">Delete</button>
+          <button
+            className="menu-button operation"
+            onClick={async () => {
+              await deleteItem();
+            }}
+          >
+            Delete
+          </button>
         </div>
       </li>
     </ul>
   );
 };
-const Dashboard = () => {
-  const { selectedDashboard, setSelectedDashboard } = useDashboard();
+const DashboardNoProvider = () => {
+  const { selectedDashboard } = useContext(DashboardContext);
   return (
     <>
       <AdminNavbar />
       <div className="dashboard-container">
         <div className="dashboard-wrapper">
-          <DashboardMenus setSelectedDashboard={setSelectedDashboard} />
+          <DashboardMenus />
           <div className="dashboard-task">
             <DashboardOperations />
             <div className="item-wrapper">
@@ -54,6 +68,13 @@ const Dashboard = () => {
         </div>
       </div>
     </>
+  );
+};
+const Dashboard = () => {
+  return (
+    <DashboardProvider>
+      <DashboardNoProvider />
+    </DashboardProvider>
   );
 };
 export default Dashboard;

@@ -14,9 +14,9 @@ const useLoginAPI = () => {
     if (localStorage.getItem("user")) {
       setUser(JSON.parse(localStorage.getItem("user")));
     }
-    GetAllUsers();
+    getAllUsers();
   }, []);
-  async function GetAllUsers() {
+  async function getAllUsers() {
     const response = await axios.get(ApiRoot);
     if (response.status === 200) {
       setAllusers(response.data);
@@ -62,7 +62,7 @@ const useLoginAPI = () => {
     setUser,
     logOut,
     isInvalid,
-    GetAllUsers,
+    getAllUsers,
     allUsers,
     isLoading,
   };

@@ -10,14 +10,14 @@ const useProductAPI = () => {
   }, []);
   async function getProducts() {
     const response = await axios.get(ApiRoot);
-    products = response.data;
-    if (products.length > 0) {
-      setProducts(products);
+    var APIProducts = response.data;
+    if (APIProducts.length > 0) {
+      setProducts(APIProducts);
       setIsLoading(false);
       console.log("GET API RESULT 200");
     }
   }
 
-  return { products, isLoading };
+  return { products, isLoading, getProducts };
 };
 export default useProductAPI;

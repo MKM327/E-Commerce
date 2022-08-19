@@ -11,7 +11,7 @@ const LoginProvider = ({ children }) => {
     logOut,
     isInvalid,
     allUsers,
-    GetAllUsers,
+    getAllUsers,
     isLoading,
   } = useLoginAPI();
   return (
@@ -25,7 +25,7 @@ const LoginProvider = ({ children }) => {
         logOut,
         isInvalid,
         allUsers,
-        GetAllUsers,
+        getAllUsers,
         isLoading,
       }}
     >

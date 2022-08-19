@@ -4,12 +4,11 @@ import DashboardProduct from "./DashboardProduct";
 
 const DashboardProducts = () => {
   const { products, isLoading } = useContext(ProductContext);
-  return isLoading ? (
-    <h1>Loading...</h1>
-  ) : (
-    products.map((product) => {
-      return <DashboardProduct product={product} key={product.id} />;
-    })
-  );
+
+  return isLoading
+    ? null
+    : products.map((product) => {
+        return <DashboardProduct product={product} key={product.id} />;
+      });
 };
 export default DashboardProducts;

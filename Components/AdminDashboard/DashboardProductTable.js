@@ -9,12 +9,15 @@ const DashboardHeader = () => {
     </tr>
   );
 };
-const DashboardProductTable = () => {
+const DashboardProductTable = ({ setClickedRow, clickedRow }) => {
   return (
     <table className="dashboard-item-list">
       <tbody>
         <DashboardHeader />
-        <DashboardProducts />
+        <DashboardProducts
+          setClickedRow={setClickedRow}
+          clickedRow={clickedRow}
+        />
       </tbody>
     </table>
   );
