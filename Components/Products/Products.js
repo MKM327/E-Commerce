@@ -6,6 +6,7 @@ const Products = () => {
 };
 const ProductsNoProvider = () => {
   const { products, isLoading } = useContext(ProductContext);
+  
   return isLoading ? (
     <h1>Loading...</h1>
   ) : (

@@ -1,3 +1,5 @@
+import useFirebaseStorage from "../../Hooks/useFirebaseStorage";
+
 const ProductDescription = ({ product }) => {
   const { price, description, id } = product;
   return (
@@ -18,14 +20,12 @@ const ProductDescription = ({ product }) => {
   );
 };
 const Product = ({ product }) => {
+  const { imageUrl } = useFirebaseStorage(product.id);
+
   return (
     <div className="product">
       <div className="image-wrapper">
-        <img
-          src={`/images/${product.id}.jpg`}
-          alt="test"
-          className="product-image"
-        />
+        <img src={imageUrl} alt="test" className="product-image" />
       </div>
       <ProductDescription product={product} />
       <div className="product-cart"></div>
