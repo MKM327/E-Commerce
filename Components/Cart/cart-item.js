@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { CheckoutContext } from "../../Contexts/CheckoutContext";
+import useFirebaseStorage from "../../Hooks/useFirebaseStorage";
 const ItemDescription = ({ item }) => {
   const { renderCartItems } = useContext(CheckoutContext);
   const { description, id } = item;
@@ -28,7 +29,6 @@ const ItemDescription = ({ item }) => {
             renderCartItems();
           }}
         >
-          //create an option based on the quantity count
           {Array(item.quantity)
             //max is 9
             .fill(0)
@@ -45,11 +45,12 @@ const ItemDescription = ({ item }) => {
   );
 };
 const CartItem = ({ item }) => {
-  const {price, id } = item;
+  const { price } = item;
+  const { imageUrl } = useFirebaseStorage(item.id);
   return (
     <li className="cart-item">
       <div className="image-wrapper">
-        <img src={`/images/${id}.jpg`} alt="" className="cart-image" />
+        <img src={imageUrl} alt="asd" className="cart-image" />
       </div>
       <ItemDescription item={item} />
       <div className="cart-checkout">

@@ -54,7 +54,10 @@ const DashboardNoProvider = () => {
       <AdminNavbar />
       <div className="dashboard-container">
         <div className="dashboard-wrapper">
-          <form className="dashboard-edit closed">
+          <form
+            className="dashboard-edit open"
+            onClick={(e) => e.preventDefault()}
+          >
             <div className="input-container">
               <input type="text" className="dashboard-input" id="name" />
               <label htmlFor="name" className="input-label">
