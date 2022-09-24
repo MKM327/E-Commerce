@@ -4,9 +4,9 @@ import {
   DashboardProvider,
 } from "../../Contexts/DashboardContext";
 import AdminNavbar from "../NavigationBar/AdminNavbar";
-import DashboardProductTable from "./DashboardProductTable";
+import AdminManage from "./AdminManage";
+import DashboardProductTable from "./Products/DashboardProductTable";
 import DashboardUserTable from "./Users/DashboardUserTable";
-
 const DashboardMenus = () => {
   const { setSelectedDashboard } = useContext(DashboardContext);
   return (
@@ -54,36 +54,7 @@ const DashboardNoProvider = () => {
       <AdminNavbar />
       <div className="dashboard-container">
         <div className="dashboard-wrapper">
-          <form
-            className="dashboard-edit open"
-            onClick={(e) => e.preventDefault()}
-          >
-            <div className="input-container">
-              <input type="text" className="dashboard-input" id="name" />
-              <label htmlFor="name" className="input-label">
-                Name
-              </label>
-            </div>
-            <div className="input-container">
-              <input type="text" className="dashboard-input" id="type" />
-              <label htmlFor="type" className="input-label">
-                Type
-              </label>
-            </div>
-            <div className="input-container">
-              <input type="text" className="dashboard-input" id="price" />
-              <label htmlFor="name" className="input-label">
-                Name
-              </label>
-            </div>
-            <div className="input-container">
-              <input type="text" className="dashboard-input" id="quantity" />
-              <label htmlFor="name" className="input-label">
-                Quantity
-              </label>
-            </div>
-            <button className="product-button">Add/Update</button>
-          </form>
+          <AdminManage />
           <DashboardMenus />
           <div className="dashboard-task">
             <DashboardOperations />

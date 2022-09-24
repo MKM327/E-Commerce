@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ProductContext } from "../../Contexts/ProductsContext";
+import { ProductContext } from "../../../Contexts/ProductsContext";
 import DashboardProduct from "./DashboardProduct";
 
 const DashboardProducts = () => {

@@ -9,6 +9,8 @@ const DashboardProvider = ({ children }) => {
     setClickedRow,
     clickedRow,
     deleteItem,
+    setMenuState,
+    menuState,
   } = useDashboard();
   return (
     <DashboardContext.Provider
@@ -18,6 +20,8 @@ const DashboardProvider = ({ children }) => {
         setClickedRow,
         clickedRow,
         deleteItem,
+        setMenuState,
+        menuState,
       }}
     >
       {children}

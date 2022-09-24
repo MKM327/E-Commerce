@@ -9,6 +9,7 @@ const useDashboard = () => {
   const [clickedRow, setClickedRow] = useState({});
   const { getProducts } = useContext(ProductContext);
   const { getAllUsers } = useContext(LoginContext);
+  const [menuState, setMenuState] = useState("closed");
   useEffect(() => {});
   function setDashboard(dashboard) {
     var lowerCaseDashboard = dashboard.toLowerCase();
@@ -32,12 +33,18 @@ const useDashboard = () => {
     }
     setClickedRow({});
   }
+  function ManageMenu() {
+    if (menuState === "closed") setMenuState("open");
+    else if (menuState === "open") setMenuState("closed");
+  }
   return {
     selectedDashboard,
     setSelectedDashboard: setDashboard,
     setClickedRow,
     clickedRow,
     deleteItem,
+    setMenuState: ManageMenu,
+    menuState,
   };
 };
 export default useDashboard;

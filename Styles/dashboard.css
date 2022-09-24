@@ -170,3 +170,23 @@ body{
     visibility: hidden;
     opacity: 0;
 }
+.dashboard-quit{
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.quit-item{
+    background-color: #FFF0EB;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    padding: 2px;
+    margin-bottom: 5px;
+    transition: all .5s ease;
+}
+.quit-item:hover{
+    color: #FFF0EB;
+    background-color: #2D0B00;
+}

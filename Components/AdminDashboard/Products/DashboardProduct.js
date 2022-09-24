@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { DashboardContext } from "../../Contexts/DashboardContext";
+import { DashboardContext } from "../../../Contexts/DashboardContext";
 const DashboardProduct = ({ product }) => {
   const { clickedRow, setClickedRow } = useContext(DashboardContext);
   const { price, description, productType, quantity } = product;
