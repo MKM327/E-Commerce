@@ -190,3 +190,30 @@ body{
     color: #FFF0EB;
     background-color: #2D0B00;
 }
+.photo-label{
+    color: #FFF0EB;
+}
+
+.photo-input::-webkit-file-upload-button{
+    visibility: hidden;
+}
+.photo-input{
+    width: 6rem;
+    margin-right: 2rem;
+    margin-left: 4px;
+}
+.photo-input::before{
+    width: 4rem;
+    text-align: center;
+    content: 'Upload';
+    display: inline-block;
+    border: 1px solid #999;
+    border-radius: 5px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    color: #2D0B00;
+    background-color: #f9f9f9;
+
+}

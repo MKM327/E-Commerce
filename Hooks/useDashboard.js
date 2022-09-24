@@ -37,6 +37,7 @@ const useDashboard = () => {
     if (menuState === "closed") setMenuState("open");
     else if (menuState === "open") setMenuState("closed");
   }
+  
   return {
     selectedDashboard,
     setSelectedDashboard: setDashboard,

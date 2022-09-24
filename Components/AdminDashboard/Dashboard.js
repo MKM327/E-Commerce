@@ -27,13 +27,23 @@ const DashboardMenus = () => {
   );
 };
 const DashboardOperations = () => {
-  const { deleteItem } = useContext(DashboardContext);
+  const { deleteItem, setMenuState } = useContext(DashboardContext);
   return (
     <ul className="dashboard-list">
       <li className="dashboard-menu">
         <div className="dashboard-operations">
-          <button className="menu-button operation">Add</button>
-          <button className="menu-button operation">Edit</button>
+          <button
+            className="menu-button operation"
+            onClick={() => setMenuState()}
+          >
+            Add
+          </button>
+          <button
+            className="menu-button operation"
+            onClick={() => setMenuState()}
+          >
+            Edit
+          </button>
           <button
             className="menu-button operation"
             onClick={async () => {
