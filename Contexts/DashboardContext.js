@@ -14,8 +14,8 @@ const DashboardProvider = ({ children }) => {
     menuState,
   } = useDashboard();
   const {
-    setName,
-    name,
+    setDescription,
+    description,
     setType,
     type,
     setPrice,
@@ -37,8 +37,8 @@ const DashboardProvider = ({ children }) => {
         deleteItem,
         setMenuState,
         menuState,
-        setName,
-        name,
+        setDescription,
+        description,
         setType,
         type,
         setPrice,

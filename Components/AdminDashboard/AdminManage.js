@@ -5,7 +5,7 @@ const AdminManage = () => {
   const {
     setMenuState,
     menuState,
-    setName,
+    setDescription,
     setQuantity,
     setPrice,
     setType,
@@ -33,11 +33,9 @@ const AdminManage = () => {
           className="dashboard-input"
           id="name"
           required
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Description"
         />
-        <label htmlFor="name" className="input-label">
-          Name
-        </label>
       </div>
       <div className="input-container">
         <input
@@ -46,10 +44,8 @@ const AdminManage = () => {
           id="type"
           required
           onChange={(e) => setType(e.target.value)}
+          placeholder="Type"
         />
-        <label htmlFor="type" className="input-label">
-          Type
-        </label>
       </div>
 
       <div className="input-container">
@@ -59,10 +55,8 @@ const AdminManage = () => {
           id="quantity"
           required
           onChange={(e) => setQuantity(e.target.value)}
+          placeholder="Quantity"
         />
-        <label htmlFor="name" className="input-label">
-          Quantity
-        </label>
       </div>
       <div className="input-container">
         <input
@@ -71,10 +65,8 @@ const AdminManage = () => {
           id="Price"
           required
           onChange={(e) => setPrice(e.target.value)}
+          placeholder="Price"
         />
-        <label htmlFor="name" className="input-label">
-          Price
-        </label>
       </div>
       <div className="input-container file">
         <input

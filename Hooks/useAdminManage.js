@@ -3,7 +3,7 @@ import { useState } from "react";
 import useFirebaseStorage from "./useFirebaseStorage";
 const API_Root = "https://localhost:7160/api/";
 const useAdminManage = () => {
-  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
   const [type, setType] = useState("");
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
@@ -12,9 +12,15 @@ const useAdminManage = () => {
   const { uploadImage } = useFirebaseStorage();
 
   async function manageForm() {
+    if (
+      !Number.isInteger(parseInt(quantity)) ||
+      !Number.isInteger(parseInt(price))
+    )
+      return;
+
     setLoading("open");
     const data = {
-      Description: name,
+      Description: description,
       ProductType: type,
       Price: Number(price),
       Quantity: Number(quantity),
@@ -23,7 +29,7 @@ const useAdminManage = () => {
     const response = await axios.post(API_Root + "ECommerce/Add", data);
     const id = response.data.id;
     await uploadImage(photo, id);
-    setName("");
+    setDescription("");
     setType("");
     setPrice("");
     setQuantity("");
@@ -32,8 +38,8 @@ const useAdminManage = () => {
   }
 
   return {
-    setName,
-    name,
+    setDescription,
+    description,
     setType,
     type,
     setPrice,
