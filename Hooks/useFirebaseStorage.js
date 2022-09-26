@@ -1,9 +1,10 @@
 import { initializeApp } from "firebase/app";
-import { getDownloadURL, getStorage, ref } from "firebase/storage";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { useEffect, useState } from "react";
 const useFirebaseStorage = (id) => {
   const [imageUrl, setImageUrl] = useState("");
   useEffect(() => {
+    if (id === undefined) return;
     getImage(id);
   });
   const firebaseConfig = {
@@ -26,7 +27,15 @@ const useFirebaseStorage = (id) => {
       console.log(error);
     }
   }
+  async function uploadImage(image, id) {
+    try {
+      const storageRef = ref(storage, `${id}.jpg`);
+      await uploadBytes(storageRef, image);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-  return { imageUrl };
+  return { imageUrl, uploadImage };
 };
 export default useFirebaseStorage;

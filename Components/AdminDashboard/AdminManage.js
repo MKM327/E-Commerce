@@ -2,12 +2,25 @@ import { useContext } from "react";
 import { DashboardContext } from "../../Contexts/DashboardContext";
 
 const AdminManage = () => {
-  const { setMenuState, menuState, setName, setQuantity, setPrice, setType } =
-    useContext(DashboardContext);
+  const {
+    setMenuState,
+    menuState,
+    setName,
+    setQuantity,
+    setPrice,
+    setType,
+    setPhoto,
+    photo,
+    manageForm,
+    loading,
+  } = useContext(DashboardContext);
   return (
     <form
       className={`dashboard-edit ${menuState}`}
-      onSubmit={() => manageForm()}
+      onSubmit={(e) => {
+        e.preventDefault();
+        manageForm();
+      }}
     >
       <div className="dashboard-quit">
         <div className="quit-item" onClick={() => setMenuState()}>
@@ -69,13 +82,25 @@ const AdminManage = () => {
           id="product-photo"
           className="photo-input"
           accept="image/x-png,image/gif,image/jpeg"
-          onChange={(e) => e.value}
+          onChange={(e) => setPhoto(e.target.files[0])}
         ></input>
-        <label className="photo-label" htmlFor="product-photo">
-          Name
-        </label>
+        {photo != null ? (
+          <label className="photo-label" htmlFor="product-photo">
+            {photo.name}
+          </label>
+        ) : (
+          <label className="photo-label" htmlFor="product-photo">
+            Upload Photo
+          </label>
+        )}
       </div>
       <button className="product-button">Add/Update</button>
+      <div className={`lds-ring ${loading}`}>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </form>
   );
 };

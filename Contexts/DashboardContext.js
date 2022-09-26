@@ -22,6 +22,10 @@ const DashboardProvider = ({ children }) => {
     price,
     setQuantity,
     quantity,
+    manageForm,
+    setPhoto,
+    photo,
+    loading,
   } = useAdminManage();
   return (
     <DashboardContext.Provider
@@ -41,6 +45,10 @@ const DashboardProvider = ({ children }) => {
         price,
         setQuantity,
         quantity,
+        manageForm,
+        setPhoto,
+        photo,
+        loading,
       }}
     >
       {children}
