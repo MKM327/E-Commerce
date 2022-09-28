@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import { ProductContext } from "../Contexts/ProductsContext";
 import { LoginContext } from "../Contexts/LoginContext";
@@ -10,7 +10,6 @@ const useDashboard = () => {
   const { getProducts } = useContext(ProductContext);
   const { getAllUsers } = useContext(LoginContext);
   const [menuState, setMenuState] = useState("closed");
-  useEffect(() => {});
   function setDashboard(dashboard) {
     var lowerCaseDashboard = dashboard.toLowerCase();
     if (Dashboards.includes(lowerCaseDashboard)) {
