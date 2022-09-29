@@ -1,0 +1,83 @@
+.add-img-wrapper{
+    max-width: 330px;
+    max-height: 310px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.add{
+    display: flex;
+    margin-top: 0px;
+    flex: 1;
+}
+.add-inputs{
+    margin-left: 250px;
+    margin-right: 50px;
+    width: 100%;
+}
+.add-input-wrapper{
+    margin-top: 19px;
+}
+.add-input{
+    width: 100%;
+    height: 30px;
+    background-color: #F5F5F5;
+    border-radius: 21px;
+    outline: none;
+    border: none;
+    padding-left: 15px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+.input-header{
+    display: block;
+    margin-left: 9px;
+}
+.add-input-wrapper-double{
+    display: flex;
+    gap: 43px;
+    margin-top: 19px;
+}
+.add-input-wrapper-double div{
+    flex:1;
+    gap: 190px;
+}
+.double{
+    flex: 1;
+}
+.add-btn{
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    margin-top: 31px;
+    cursor: pointer;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    padding: 10px;
+}
+.add-btn:hover{
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    background-color: #2d0b00;
+    color: white;
+}
+.photo-input::-webkit-file-upload-button{
+    visibility: hidden;
+}
+.photo-input{
+    width: 8rem;
+    margin-top: 19px;
+}
+.photo-input::before{
+    width: 6.5rem;
+    text-align: center;
+    content: 'Upload An Image';
+    display: inline-block;
+    border: 1px solid #999;
+    border-radius: 5px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    color: #2D0B00;
+    background-color: #f9f9f9;
+
+}

@@ -2,6 +2,8 @@ import "../Styles/styles.css";
 import "../Styles/cart.css";
 import "../Styles/login.css";
 import "../Styles/dashboard.css";
+import "../Styles/navbar.css";
+import "../Styles/AddProduct.css";
 import { LoginProvider } from "../Contexts/LoginContext";
 import { ProductProvider } from "../Contexts/ProductsContext";
 

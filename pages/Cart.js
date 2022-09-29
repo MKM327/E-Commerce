@@ -1,7 +1,5 @@
 import CartItems from "../Components/Cart/Cart-Items";
 import Navbar from "../Components/NavigationBar/Navbar";
-import { CheckoutProvider } from "../Contexts/CheckoutContext";
-import useCart from "../Hooks/useCart";
 const Cart = () => {
   return (
     
