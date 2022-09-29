@@ -17,7 +17,6 @@ const AddProduct = () => {
   return (
     <div className="container add">
       <form
-        action="|"
         className="add"
         onSubmit={(e) => {
           manageForm(e);

@@ -12,7 +12,6 @@ const AdminManage = () => {
     setPhoto,
     photo,
     manageForm,
-    loading,
   } = useContext(DashboardContext);
   return (
     <form

@@ -7,7 +7,7 @@ const useProductAPI = () => {
   const ApiRoot = "https://localhost:7160/api/ECommerce/";
   useEffect(() => {
     getProducts();
-  }, [products]);
+  }, []);
   async function getProducts() {
     const response = await axios.get(ApiRoot);
     var APIProducts = response.data;
