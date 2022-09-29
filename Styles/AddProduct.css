@@ -65,6 +65,7 @@
 .photo-input{
     width: 8rem;
     margin-top: 19px;
+    margin-left: 59px;
 }
 .photo-input::before{
     width: 6.5rem;

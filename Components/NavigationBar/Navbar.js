@@ -9,7 +9,7 @@ const Navbar = () => {
     setRendered(true);
   }, []);
   return (
-    <nav>
+    <nav className="navbar-elements">
       {rendered == true ? (
         <>
           <HandleRoles role={"admin"}>
