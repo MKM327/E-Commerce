@@ -4,6 +4,7 @@ import "../Styles/login.css";
 import "../Styles/dashboard.css";
 import "../Styles/navbar.css";
 import "../Styles/AddProduct.css";
+import "../Styles/UserProfile.css";
 import { LoginProvider } from "../Contexts/LoginContext";
 import { ProductProvider } from "../Contexts/ProductsContext";
 
