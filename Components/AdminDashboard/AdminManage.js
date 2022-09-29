@@ -87,12 +87,6 @@ const AdminManage = () => {
         )}
       </div>
       <button className="product-button">Add/Update</button>
-      <div className={`lds-ring ${loading}`}>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
     </form>
   );
 };
