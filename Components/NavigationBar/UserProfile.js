@@ -24,7 +24,10 @@ const UserDropdown = ({ isOpen }) => {
       <div className="dropdown-header">
         <div className="user-dropdown-item">{`Hello ${user.userProfile.name}`}</div>
       </div>
-      <div className="user-dropdown-item">Profile</div>
+
+      <Link href={"/Profile"}>
+        <div className="user-dropdown-item">Profile</div>
+      </Link>
       <div className="user-dropdown-item">My Products</div>
       <div className="user-dropdown-item" onClick={() => logOut()}>
         Logout

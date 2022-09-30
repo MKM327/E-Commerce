@@ -7,22 +7,14 @@ const useLoginAPI = () => {
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
   const [isInvalid, setIsInvalid] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [allUsers, setAllusers] = useState([]);
   const router = useRouter();
   useEffect(() => {
+    if (user !== null) router.push("/");
     if (localStorage.getItem("user")) {
       setUser(JSON.parse(localStorage.getItem("user")));
     }
-    getAllUsers();
   }, []);
-  async function getAllUsers() {
-    const response = await axios.get(ApiRoot);
-    if (response.status === 200) {
-      setAllusers(response.data);
-      setIsLoading(false);
-    }
-  }
+
   async function VerifyUser() {
     try {
       const response = await axios.post(ApiRoot + "Verify", {
@@ -62,9 +54,6 @@ const useLoginAPI = () => {
     setUser,
     logOut,
     isInvalid,
-    getAllUsers,
-    allUsers,
-    isLoading,
   };
 };
 export default useLoginAPI;

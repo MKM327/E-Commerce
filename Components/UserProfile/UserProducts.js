@@ -3,7 +3,6 @@ import UserProduct from "./UserProduct";
 
 const UserProducts = () => {
   const { userProducts, loading } = useUserProducts();
-  console.log(userProducts);
   return (
     <div className="user-products">
       <h3>My Products</h3>
