@@ -6,7 +6,7 @@ const useFirebaseStorage = (id) => {
   useEffect(() => {
     if (id === undefined) return;
     getImage(id);
-  });
+  }, []);
   const firebaseConfig = {
     apiKey: "AIzaSyCj2H24MUHHD9ki9N1nDi7dC-b7fEr7CQQ",
     authDomain: "e-commerce-7ecf6.firebaseapp.com",
