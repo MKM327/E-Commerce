@@ -1,4 +1,5 @@
-import useUserInfo from "../../Hooks/useUserInfo";
+import { useContext } from "react";
+import { ProfileContext } from "../../Contexts/ProfileContext";
 const ChangePassword = () => {
   return (
     <form className="profile-info">
@@ -14,35 +15,66 @@ const ChangePassword = () => {
     </form>
   );
 };
-const ChangeInfo = ({ userProfile }) => {
+const ChangeInfo = () => {
+  const {
+    user,
+    nameRef,
+    SurnameRef,
+    EmailRef,
+    HandleProfileUpdate,
+    isUpdateFinished,
+  } = useContext(ProfileContext);
+  const { userProfile } = user;
   const { name, email, surname } = userProfile;
   return (
-    <form className="profile-info">
+    <form className="profile-info" onSubmit={(e) => HandleProfileUpdate(e)}>
       <div>
         <label htmlFor="Name">Name</label>
-        <input type="text" className="add-input" id="Name" value={name} />
+        <input
+          type="text"
+          className="add-input"
+          id="Name"
+          defaultValue={name}
+          ref={nameRef}
+        />
       </div>
       <div>
         <label htmlFor="Name">Surname</label>
-        <input type="text" className="add-input" id="Name" value={surname} />
+        <input
+          type="text"
+          className="add-input"
+          id="surname"
+          defaultValue={surname}
+          ref={SurnameRef}
+        />
       </div>
       <div>
         <label htmlFor="Name">Email</label>
-        <input type="email" className="add-input" id="Name" value={email} />
+        <input
+          type="email"
+          className="add-input"
+          id="email"
+          defaultValue={email}
+          ref={EmailRef}
+        />
       </div>
-      <button className="add-btn">Update</button>
+      <div className="user-update-flex">
+        <button className="add-btn">Update</button>
+        <div className={`lds-ring ${isUpdateFinished}`}>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
     </form>
   );
 };
 const ProfileInfo = () => {
-  const { user, loading } = useUserInfo();
+  const { loading } = useContext(ProfileContext);
   return (
     <div className="profile-update">
-      {!loading ? (
-        <ChangeInfo userProfile={user.userProfile} />
-      ) : (
-        <div>Loading...</div>
-      )}
+      {!loading ? <ChangeInfo /> : <div>Loading...</div>}
       <ChangePassword />
     </div>
   );

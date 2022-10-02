@@ -1,12 +1,15 @@
+import { ProfileProvider } from "../../Contexts/ProfileContext";
 import ProfileInfo from "./ProfileInfo";
 import UserProducts from "./UserProducts";
 
 const UserProfile = () => {
   return (
-    <div className="container profile">
-      <ProfileInfo />
-      <UserProducts />
-    </div>
+    <ProfileProvider>
+      <div className="container profile">
+        <ProfileInfo />
+        <UserProducts />
+      </div>
+    </ProfileProvider>
   );
 };
 export default UserProfile;
