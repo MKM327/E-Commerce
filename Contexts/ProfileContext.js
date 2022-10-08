@@ -11,6 +11,9 @@ const ProfileProvider = ({ children }) => {
     HandleProfileUpdate,
     SurnameRef,
     isUpdateFinished,
+    HandlePasswordUpdate,
+    oldPasswordRef,
+    newPasswordRef,
   } = useUserInfo();
 
   return (
@@ -23,6 +26,9 @@ const ProfileProvider = ({ children }) => {
         HandleProfileUpdate,
         SurnameRef,
         isUpdateFinished,
+        HandlePasswordUpdate,
+        oldPasswordRef,
+        newPasswordRef,
       }}
     >
       {children}

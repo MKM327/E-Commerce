@@ -1,15 +1,28 @@
 import { useContext } from "react";
 import { ProfileContext } from "../../Contexts/ProfileContext";
+import LoadingSpinner from "../LoadingSpinner";
 const ChangePassword = () => {
+  const { HandlePasswordUpdate, oldPasswordRef, newPasswordRef } =
+    useContext(ProfileContext);
   return (
-    <form className="profile-info">
+    <form className="profile-info" onSubmit={(e) => HandlePasswordUpdate(e)}>
       <div>
         <label htmlFor="Name">Old Password</label>
-        <input type="email" className="add-input" id="Name" />
+        <input
+          type="text"
+          className="add-input"
+          id="Name"
+          ref={oldPasswordRef}
+        />
       </div>
       <div>
         <label htmlFor="Name">New Password</label>
-        <input type="email" className="add-input" id="Name" />
+        <input
+          type="password"
+          className="add-input"
+          id="Name"
+          ref={newPasswordRef}
+        />
       </div>
       <button className="add-btn">Update Password</button>
     </form>
@@ -60,12 +73,8 @@ const ChangeInfo = () => {
       </div>
       <div className="user-update-flex">
         <button className="add-btn">Update</button>
-        <div className={`lds-ring ${isUpdateFinished}`}>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
+
+        <LoadingSpinner loading={isUpdateFinished} />
       </div>
     </form>
   );
