@@ -1,16 +1,50 @@
+import Link from "next/link";
 import useUserProducts from "../../Hooks/useUserProducts";
 import UserProduct from "./UserProduct";
 
+const UserProductHeader = ({ setSearchValue }) => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+      }}
+    >
+      <h3>My Products</h3>
+      <input
+        className="add-input"
+        style={{ maxWidth: "30%" }}
+        placeholder="Search Product"
+        onChange={(e) => {
+          setSearchValue(e.target.value);
+        }}
+      />
+      <Link href={"/NewProduct"}>
+        <button className="add-btn" style={{ marginTop: 0 }}>
+          Add Product
+        </button>
+      </Link>
+    </div>
+  );
+};
 const UserProducts = () => {
-  const { userProducts, loading } = useUserProducts();
+  const { userProducts, loading, setSearchValue, searchedUserProducts } =
+    useUserProducts();
   return (
     <div className="user-products">
-      <h3>My Products</h3>
+      <UserProductHeader setSearchValue={setSearchValue} />
       <div className="user-row">
         {!loading ? (
-          userProducts.map((product) => (
-            <UserProduct key={product.id} product={product} />
-          ))
+          searchedUserProducts.length === 0 ? (
+            userProducts.map((product) => {
+              return <UserProduct product={product} key={product.id} />;
+            })
+          ) : (
+            searchedUserProducts.map((product) => {
+              return <UserProduct product={product} key={product.id} />;
+            })
+          )
         ) : (
           <div>Loading...</div>
         )}

@@ -11,7 +11,7 @@ const ChangePassword = () => {
         <input
           type="text"
           className="add-input"
-          id="Name"
+          id="oldPassword"
           ref={oldPasswordRef}
         />
       </div>
@@ -20,7 +20,7 @@ const ChangePassword = () => {
         <input
           type="password"
           className="add-input"
-          id="Name"
+          id="newPassword"
           ref={newPasswordRef}
         />
       </div>
