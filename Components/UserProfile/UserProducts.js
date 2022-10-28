@@ -29,24 +29,17 @@ const UserProductHeader = ({ setSearchValue }) => {
   );
 };
 const UserProducts = () => {
-  const { userProducts, loading, setSearchValue, searchedUserProducts } =
-    useUserProducts();
+  const { loading, setSearchValue, filteredUserProducts } = useUserProducts();
   return (
     <div className="user-products">
       <UserProductHeader setSearchValue={setSearchValue} />
       <div className="user-row">
         {!loading ? (
-          searchedUserProducts.length === 0 ? (
-            userProducts.map((product) => {
-              return <UserProduct product={product} key={product.id} />;
-            })
-          ) : (
-            searchedUserProducts.map((product) => {
-              return <UserProduct product={product} key={product.id} />;
-            })
-          )
+          filteredUserProducts.map((product) => {
+            return <UserProduct product={product} key={product.id} />;
+          })
         ) : (
-          <div>Loading...</div>
+          <h3>Loading...</h3>
         )}
       </div>
     </div>

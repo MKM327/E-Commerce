@@ -5,23 +5,16 @@ const API_Root = "https://localhost:7160/api/ECommerce/";
 const useUserProducts = () => {
   const { user } = useContext(LoginContext);
   const [userProducts, setUserProducts] = useState([]);
-  const [searchedUserProducts, setSearchedUserProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchValue, setSearchValue] = useState("");
   useEffect(() => {
     if (user === null) return;
     getUserProducts();
   }, [user]);
-  useEffect(() => {
-    if (searchValue === "") {
-      setSearchedUserProducts([]);
-      return;
-    }
-    const filteredUserProducts = userProducts.filter((product) => {
-      return product.header.toLowerCase().includes(searchValue.toLowerCase());
-    });
-    setSearchedUserProducts(filteredUserProducts);
-  }, [searchValue]);
+
+  const filteredUserProducts = userProducts.filter((product) => {
+    return product.header.toLowerCase().includes(searchValue.toLowerCase());
+  });
   async function getUserProducts() {
     setLoading(true);
     if (user === null) return;
@@ -35,10 +28,9 @@ const useUserProducts = () => {
   }
   return {
     loading,
-    userProducts,
     getUserProducts,
     setSearchValue,
-    searchedUserProducts,
+    filteredUserProducts,
   };
 };
 export default useUserProducts;
