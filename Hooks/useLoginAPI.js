@@ -7,6 +7,7 @@ const useLoginAPI = () => {
   const passwordRef = useRef();
   const [user, setUser] = useState(null);
   const [isInvalid, setIsInvalid] = useState(false);
+  const [menuState, setMenuState] = useState("Login");
   const router = useRouter();
   useEffect(() => {
     if (user !== null) router.push("/");
@@ -55,6 +56,8 @@ const useLoginAPI = () => {
     isInvalid,
     usernameRef,
     passwordRef,
+    menuState,
+    setMenuState,
   };
 };
 export default useLoginAPI;

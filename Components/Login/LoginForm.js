@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { LoginContext } from "../../Contexts/LoginContext";
 const LoginForm = () => {
-  const { usernameRef, passwordRef, handleSubmit, isInvalid } =
+  const { usernameRef, passwordRef, handleSubmit, isInvalid, setMenuState } =
     useContext(LoginContext);
   return (
     <form className="login-form" onSubmit={handleSubmit}>
@@ -26,6 +26,12 @@ const LoginForm = () => {
         ref={passwordRef}
       />
       <button className="product-button login-button">Sign in</button>
+      <span
+        style={{ cursor: "pointer" }}
+        onClick={() => setMenuState("Register")}
+      >
+        Dont Have Account ? Register!
+      </span>
     </form>
   );
 };
