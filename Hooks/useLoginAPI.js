@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 const ApiRoot = "https://localhost:7160/api/Login/";
 const useLoginAPI = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const usernameRef = useRef();
+  const passwordRef = useRef();
   const [user, setUser] = useState(null);
   const [isInvalid, setIsInvalid] = useState(false);
   const router = useRouter();
@@ -18,8 +18,8 @@ const useLoginAPI = () => {
   async function VerifyUser() {
     try {
       const response = await axios.post(ApiRoot + "Verify", {
-        username: username,
-        password: password,
+        username: usernameRef.current.value,
+        password: passwordRef.current.value,
       });
       response.status === 200 ? loginUser(response.data) : setUser(null);
     } catch (error) {
@@ -46,14 +46,15 @@ const useLoginAPI = () => {
       setIsInvalid(true);
     }
   }
+
   return {
-    setPassword,
-    setUsername,
     handleSubmit,
     user,
     setUser,
     logOut,
     isInvalid,
+    usernameRef,
+    passwordRef,
   };
 };
 export default useLoginAPI;

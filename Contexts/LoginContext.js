@@ -3,8 +3,6 @@ import useLoginAPI from "../Hooks/useLoginAPI";
 const LoginContext = createContext();
 const LoginProvider = ({ children }) => {
   const {
-    setPassword,
-    setUsername,
     handleSubmit,
     user,
     setUser,
@@ -13,12 +11,14 @@ const LoginProvider = ({ children }) => {
     allUsers,
     getAllUsers,
     isLoading,
+    usernameRef,
+    passwordRef,
   } = useLoginAPI();
   return (
     <LoginContext.Provider
       value={{
-        setPassword,
-        setUsername,
+        usernameRef,
+        passwordRef,
         handleSubmit,
         user,
         setUser,

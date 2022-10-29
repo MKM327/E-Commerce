@@ -30,6 +30,8 @@ const useUserInfo = () => {
       email: email,
     };
     await axios.put(API_Root + "UpdateProfile", data);
+    const localstorageUser = { ...user, ...data };
+    localStorage.setItem("user", JSON.stringify(localstorageUser));
     setIsUpdateFinished("closed");
   }
   async function HandlePasswordUpdate(e) {

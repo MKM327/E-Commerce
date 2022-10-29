@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { LoginContext } from "../../Contexts/LoginContext";
 const LoginForm = () => {
-  const { setPassword, setUsername, handleSubmit, isInvalid } =
+  const { usernameRef, passwordRef, handleSubmit, isInvalid } =
     useContext(LoginContext);
   return (
     <form className="login-form" onSubmit={handleSubmit}>
@@ -14,16 +14,16 @@ const LoginForm = () => {
         className="login-input-area"
         placeholder="Username"
         required
-        onChange={(e) => setUsername(e.target.value)}
+        ref={usernameRef}
       />
       <input
-        type="text"
+        type="password"
         name="username"
         id="username"
         className="login-input-area"
         required
         placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
+        ref={passwordRef}
       />
       <button className="product-button login-button">Sign in</button>
     </form>
