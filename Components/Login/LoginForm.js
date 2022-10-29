@@ -26,10 +26,7 @@ const LoginForm = () => {
         ref={passwordRef}
       />
       <button className="product-button login-button">Sign in</button>
-      <span
-        style={{ cursor: "pointer" }}
-        onClick={() => setMenuState("Register")}
-      >
+      <span style={{ cursor: "pointer" }} onClick={() => setMenuState()}>
         Dont Have Account ? Register!
       </span>
     </form>

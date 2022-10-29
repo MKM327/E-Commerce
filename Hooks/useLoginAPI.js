@@ -33,7 +33,8 @@ const useLoginAPI = () => {
     localStorage.setItem("user", JSON.stringify(user));
     router.push("/");
   }
-  function logOut() {
+  async function logOut() {
+    await router.push("/");
     localStorage.removeItem("user");
     setUser(null);
   }
@@ -47,7 +48,9 @@ const useLoginAPI = () => {
       setIsInvalid(true);
     }
   }
-
+  function manageMenu() {
+    setMenuState(menuState === "Login" ? "Register" : "Login");
+  }
   return {
     handleSubmit,
     user,
@@ -57,7 +60,7 @@ const useLoginAPI = () => {
     usernameRef,
     passwordRef,
     menuState,
-    setMenuState,
+    setMenuState: manageMenu,
   };
 };
 export default useLoginAPI;
