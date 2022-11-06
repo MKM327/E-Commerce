@@ -63,6 +63,7 @@ const useUserInfo = () => {
       ...user,
       password: newPassword,
     };
+    console.log(data);
     const response = await axios.put(API_Root + "UpdatePassword", data);
     console.log(response);
   }

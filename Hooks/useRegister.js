@@ -23,7 +23,7 @@ const useRegister = () => {
       password: regPasswordRef.current.value,
       role: "Customer",
     };
-    const response = await axios.post(ApiRoot + "Add", data);
+    await axios.post(ApiRoot + "Add", data);
     setisSuccessful(false);
     regEmailRef.current.value = "";
     regNameRef.current.value = "";
