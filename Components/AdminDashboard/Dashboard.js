@@ -61,7 +61,9 @@ const DashboardNoProvider = () => {
   const { selectedDashboard } = useContext(DashboardContext);
   return (
     <>
-      <AdminNavbar />
+      <nav className="navbar-elements">
+        <AdminNavbar />
+      </nav>
       <div className="dashboard-container">
         <div className="dashboard-wrapper">
           <AdminManage />

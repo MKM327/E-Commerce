@@ -2,8 +2,12 @@ import { useContext } from "react";
 import { ProfileContext } from "../../Contexts/ProfileContext";
 import LoadingSpinner from "../LoadingSpinner";
 const ChangePassword = () => {
-  const { HandlePasswordUpdate, oldPasswordRef, newPasswordRef } =
-    useContext(ProfileContext);
+  const {
+    HandlePasswordUpdate,
+    oldPasswordRef,
+    newPasswordRef,
+    isPasswordUpdateFinished,
+  } = useContext(ProfileContext);
   return (
     <form className="profile-info" onSubmit={(e) => HandlePasswordUpdate(e)}>
       <div>
@@ -25,6 +29,7 @@ const ChangePassword = () => {
         />
       </div>
       <button className="add-btn">Update Password</button>
+      <LoadingSpinner loading={isPasswordUpdateFinished} />
     </form>
   );
 };

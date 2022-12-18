@@ -17,6 +17,27 @@ const AnonymusDropdown = ({ isOpen }) => {
   );
 };
 
+const AdminDropdown = ({ isOpen }) => {
+  const { user, logOut } = useContext(LoginContext);
+  return (
+    <div className={`user-dropdown ${isOpen}`}>
+      <div className="dropdown-header">
+        <div className="user-dropdown-item">{`Hello ${user.userProfile.name}`}</div>
+      </div>
+
+      <Link href={"/Profile"}>
+        <div className="user-dropdown-item">Profile</div>
+      </Link>
+      <Link href={"/Admin"}>
+        <div className="user-dropdown-item">Dashboard</div>
+      </Link>
+      <div className="user-dropdown-item" onClick={() => logOut()}>
+        Logout
+      </div>
+    </div>
+  );
+};
+
 const UserDropdown = ({ isOpen }) => {
   const { user, logOut } = useContext(LoginContext);
   return (
@@ -28,7 +49,7 @@ const UserDropdown = ({ isOpen }) => {
       <Link href={"/Profile"}>
         <div className="user-dropdown-item">Profile</div>
       </Link>
-      <div className="user-dropdown-item">My Products</div>
+
       <div className="user-dropdown-item" onClick={() => logOut()}>
         Logout
       </div>
@@ -39,7 +60,7 @@ const UserDropdown = ({ isOpen }) => {
 const UserProfile = () => {
   const { user } = useContext(LoginContext);
   const [isOpen, setIsOpen] = useState("closed");
-  useState;
+  console.log(user);
   return (
     <div
       className="user-img-wrapper"
@@ -52,7 +73,11 @@ const UserProfile = () => {
         alt=""
       />
       {user ? (
-        <UserDropdown isOpen={isOpen} />
+        user.role === "Admin" ? (
+          <AdminDropdown isOpen={isOpen} />
+        ) : (
+          <UserDropdown isOpen={isOpen} />
+        )
       ) : (
         <AnonymusDropdown isOpen={isOpen} />
       )}

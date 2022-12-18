@@ -7,14 +7,16 @@ const ProductDescription = ({ product }) => {
       <p className="product-details">{description}</p>
       <div className="product-price-description">
         <span className="product-price">{`${price}$`}</span>
-        <button
-          className="product-button"
-          onClick={() => {
-            sessionStorage.setItem(id, JSON.stringify(product));
-          }}
-        >
-          Add to cart
-        </button>
+        <div>
+          <button
+            className="product-button"
+            onClick={() => {
+              sessionStorage.setItem(id, JSON.stringify(product));
+            }}
+          >
+            Add to cart
+          </button>
+        </div>
       </div>
     </div>
   );

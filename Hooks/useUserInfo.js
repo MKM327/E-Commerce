@@ -11,7 +11,8 @@ const useUserInfo = () => {
   const newPasswordRef = useRef();
   const [loading, setLoading] = useState(true);
   const [isUpdateFinished, setIsUpdateFinished] = useState("closed");
-
+  const [isPasswordUpdateFinished, setIsPasswordUpdateFinished] =
+    useState("closed");
   useEffect(() => {
     if (user === null) return;
     setLoading(false);
@@ -30,11 +31,12 @@ const useUserInfo = () => {
       email: email,
     };
     await axios.put(API_Root + "UpdateProfile", data);
-    const localstorageUser = { ...user, ...data };
+    const localstorageUser = { ...user, ...data, id: user.id };
     localStorage.setItem("user", JSON.stringify(localstorageUser));
     setIsUpdateFinished("closed");
   }
   async function HandlePasswordUpdate(e) {
+    setIsPasswordUpdateFinished("open");
     let responsevalue;
     e.preventDefault();
     const API_Root = "https://localhost:7160/api/Login/";
@@ -45,14 +47,6 @@ const useUserInfo = () => {
         password: oldPassword,
       };
       await axios.post(API_Root + "Verify", data);
-      // if (verified.data) {
-      //   const newPassword = newPasswordRef.current.value;
-      //   const data = {
-      //     id: user.userProfile.id,
-      //     password: newPassword,
-      //   };
-      //   await axios.put(API_Root + "UpdatePassword", data);
-      // }
     } catch (error) {
       responsevalue = error.response.status;
     }
@@ -63,9 +57,8 @@ const useUserInfo = () => {
       ...user,
       password: newPassword,
     };
-    console.log(data);
-    const response = await axios.put(API_Root + "UpdatePassword", data);
-    console.log(response);
+    await axios.put(API_Root + "UpdatePassword", data);
+    setIsPasswordUpdateFinished("closed");
   }
   return {
     user,
@@ -78,6 +71,7 @@ const useUserInfo = () => {
     HandlePasswordUpdate,
     oldPasswordRef,
     newPasswordRef,
+    isPasswordUpdateFinished,
   };
 };
 export default useUserInfo;

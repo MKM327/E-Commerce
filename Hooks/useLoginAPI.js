@@ -8,12 +8,14 @@ const useLoginAPI = () => {
   const [user, setUser] = useState(null);
   const [isInvalid, setIsInvalid] = useState(false);
   const [menuState, setMenuState] = useState("Login");
+  const [allUsers, setAllUsers] = useState([]);
   const router = useRouter();
   useEffect(() => {
     if (user !== null) router.push("/");
     if (localStorage.getItem("user")) {
       setUser(JSON.parse(localStorage.getItem("user")));
     }
+    getAllUsers();
   }, []);
 
   async function VerifyUser() {
@@ -48,6 +50,15 @@ const useLoginAPI = () => {
       setIsInvalid(true);
     }
   }
+  async function getAllUsers() {
+    try {
+      await axios.get(ApiRoot).then((response) => {
+        setAllUsers(response.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
   function manageMenu() {
     setMenuState(menuState === "Login" ? "Register" : "Login");
   }
@@ -55,11 +66,14 @@ const useLoginAPI = () => {
     handleSubmit,
     user,
     setUser,
+    allUsers,
+    getAllUsers,
     logOut,
     isInvalid,
     usernameRef,
     passwordRef,
     menuState,
+
     setMenuState: manageMenu,
   };
 };
